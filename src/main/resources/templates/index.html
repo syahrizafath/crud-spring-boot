@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring Boot Thymeleaf Application</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css} " />
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><span class="fa fa-globe"></span> Browse User</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6><span class="fa fa-search"></span> Find User</h6>
+                        <form id="form-search-user">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Name" id="name-search">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Email" id="email-search">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="phone-search" id="phone-search" class="form-control" placeholder="Phone">
+                                </div>
+                                <div class="col">
+                                    <input type="date" name="date" id="date-search" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span> Search</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Sr#</th>
+                                    <th>User Name</th>
+                                    <th>User Email</th>
+                                    <th>User Phone</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="records_table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-md-12 mt-3'>
+                <div class="card">
+                    <div class="card-header">
+                        <h5><span class="fa fa-plus"></span> Add User</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="" id="form-add-user">
+                            <div class="form-group">
+                                <label for="nama">User Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">User Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">User Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="limit">Limit Reimbursement</label>
+                                <select class="form-control" name="limit" id="limit">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" id="form-edit-user">
+                            <input type="hidden" name="id-edit" id="id-edit">
+                            <div class="form-group">
+                                <label for="nama-edit">User Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nama-edit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-edit">User Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email-edit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-edit">User Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="phone-edit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="limit-edit">Limit Reimbursement</label>
+                                <select class="form-control" name="limit-edit" id="limit-edit">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeEdit" onclick="clearInput()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
